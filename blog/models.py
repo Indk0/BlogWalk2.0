@@ -15,8 +15,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
-    fields_2 = models.CharField(default = 'Hello, World!')
-    fields_3 = models.CharField(null=True)
+    # fields_2 = models.CharField(default = 'Hello, World!')
+    # fields_3 = models.CharField(null=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -30,9 +30,8 @@ class Comment(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField()
-    approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
-
+    approved = models.BooleanField(default=False) #moved this code below created_on
     class Meta:
         ordering = ["created_on"]
 
